@@ -33,9 +33,10 @@ public class App {
  * c: nửa trên đường chéo chính/phụ của ma trận vuông
  * d: nửa trên đường chéo chính/phụ của ma trận vuông
  * */
-       sumRow(a);
+      sumRow(a);
        sumColum(a);
 
+       sumDuongCheo(a);
     }
 
     //nhập ma trận
@@ -65,7 +66,7 @@ public class App {
         //       int c = a[0].length;
         for (int i = 0, r = a.length; i < r; i++) {
             for (int j = 0, c = a[0].length; j < c; j++) {
-                System.out.format("%d   ", a[i][j]); //tạo chuỗi gồm 5 ký tự căn đều mảng -5 canh trái , 5 căn phải
+                System.out.format("%5d", a[i][j]); //tạo chuỗi gồm 5 ký tự căn đều mảng -5 canh trái , 5 căn phải
             }
             System.out.println();
         }
@@ -162,7 +163,7 @@ public class App {
         int sumc = 0;
         if(c>=0 && c<a.length) {
             int j = c;
-            for (int i = 0, r = a[0].length; j<r; j++) {
+            for (int i = 0, r = a[0].length; i<r; i++) {
                 sumc += a[i][j];
             }
             System.out.format("\nTổng các số trong cột %d của mảng là: %d", c, sumc);
@@ -171,6 +172,24 @@ public class App {
             System.out.println("\nSố cột bạn nhập không tồn tại");
         }
         return sumc;
+    }
+
+    public static void sumDuongCheo(int[][] a) {
+        int sumchinh = 0, sumphu = 0;
+        if (a.length == a[0].length) {
+            for (int i = 0; i < a.length; i++) {
+                sumchinh += a[i][i];
+            }
+            System.out.println("\nTổng các số trên đường chéo chính là: " + sumchinh);
+            for (int i = 0; i < a.length; i++) {
+                sumphu += a[i][a.length - 1 - i];
+            }
+            System.out.println("Tổng các số trên đường chéo phụ là: " + sumphu);
+        }
+        else {
+            System.out.println("Đây không phải là ma trận vuông");
+        }
+
     }
 
 }
